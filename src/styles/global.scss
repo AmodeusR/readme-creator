@@ -1,0 +1,11 @@
+@use "./colors" as c;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Noto Serif JP", sans-serif;
+  background-color: c.$background;
+}
