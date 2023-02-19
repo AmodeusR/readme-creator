@@ -1,0 +1,8 @@
+$tablet: 50em;
+$desktop: 80em;
+
+@mixin media($media-width) {
+  @media (min-width: $media-width) {
+    @content
+  }
+}
