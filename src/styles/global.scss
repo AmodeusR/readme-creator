@@ -1,6 +1,8 @@
 @use "./colors" as c;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -8,4 +10,49 @@ body {
   margin: 0;
   font-family: "Poppins", "Noto Serif JP", sans-serif;
   background-color: c.$background;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  background: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+.App {
+  width: min(90%, 80rem);
+  margin-inline: auto;
+}
+
+
+.external-link {
+  color: c.$link;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: lighten(c.$link, 15%);
+  }
+
+  &:visited {
+    color: darken(c.$link, 10%);
+  }
 }
