@@ -1,7 +1,14 @@
 import { useState } from "react";
 import "./creator.scss";
 
-const availableLanguages = [
+type LanguageCode = "pt-br" | "en" | "ja" | "de" | "es";
+
+type AvailableLanguages = {
+  language: string,
+  langcode: LanguageCode
+}
+
+const availableLanguages: AvailableLanguages[] = [
   {
     language: "Português",
     langcode: "pt-br"
@@ -27,7 +34,7 @@ const availableLanguages = [
 const Creator = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("pt-br");
 
-  const handleSelection = (langcode: string) => {
+  const handleSelection = (langcode: LanguageCode) => {
     setSelectedLanguage(langcode);
   };
 
