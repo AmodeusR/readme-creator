@@ -1,0 +1,63 @@
+@use "/src/styles/colors" as c;
+@use "/src/styles/mix" as *;
+
+.creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    position: relative;
+    font-size: 4rem;
+    margin-top: 2rem;
+
+    &::after {
+      position: absolute;
+      content: url("../../assets/short-line.svg");
+      right: -.5rem;
+      bottom: -1rem;
+    }
+  }
+
+  &__languages {
+    padding-left: 0;
+    display: flex;
+    list-style: none;
+    
+    &-option-button {
+      color: c.$button;
+      padding: .1rem .3rem;
+      border-bottom: 1px solid c.$button;
+      transition: color 200ms ease;
+      font-weight: 500;
+
+
+      &.selected {
+        color: c.$main;
+        border-color: c.$main;
+      }
+
+      &:hover:not(.selected) {
+        color: darken(c.$button-background, 12%);
+        border-color: darken(c.$button-background, 12%);
+      }
+
+      @include media($tablet) {
+        padding: .1rem 1rem;
+      }
+    }
+  }
+}
+
+/* 
+  For some reason, the border from the japanese text
+  doesn't aline properly sometimes with the border-bottom
+  from the other texts. This fixes it (supposedly)
+*/
+.ja-borderfix {
+  line-height: 1.5;
+
+  @include media($tablet) {
+    line-height: 1.55;
+  }
+}
