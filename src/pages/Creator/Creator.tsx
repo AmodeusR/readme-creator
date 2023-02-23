@@ -3,12 +3,12 @@ import "./creator.scss";
 
 type LanguageCode = "pt-br" | "en" | "ja" | "de" | "es";
 
-type AvailableLanguages = {
+type AvailableLanguage = Readonly<{
   language: string,
   langcode: LanguageCode
-}
+}>;
 
-const availableLanguages: AvailableLanguages[] = [
+const availableLanguages: AvailableLanguage[] = [
   {
     language: "Português",
     langcode: "pt-br"
