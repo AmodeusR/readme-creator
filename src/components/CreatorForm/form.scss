@@ -1,0 +1,12 @@
+.form {
+  &__section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
