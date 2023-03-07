@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CreatorForm, CreatorLanguages } from "../../components";
-import { LanguageCode } from "../../components/CreatorLanguages/CreatorLanguages";
+import { LanguageCode } from "../../lang/form-fields-text";
 import "./creator.scss";
 
 

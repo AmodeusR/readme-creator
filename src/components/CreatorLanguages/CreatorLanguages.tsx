@@ -1,4 +1,4 @@
-export type LanguageCode = "pt-br" | "en" | "ja" | "de" | "es";
+import { LanguageCode } from "../../lang/form-fields-text";
 
 type AvailableLanguage = Readonly<{
   language: string;
