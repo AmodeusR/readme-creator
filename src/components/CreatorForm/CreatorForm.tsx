@@ -1,5 +1,5 @@
-import { getFormText } from "../../utils/getFormText";
-import { LanguageCode } from "../CreatorLanguages/CreatorLanguages";
+import { curryTextGetter, getFieldText } from "../../utils/getFormText";
+import { LanguageCode } from "../../lang/form-fields-text";
 import MantineInput from "../MantineInput/MantineInput";
 import "./form.scss";
 
@@ -8,15 +8,16 @@ type CreatorFormProps = {
 }
 
 const CreatorForm = ({ selectedLanguage }: CreatorFormProps) => {
-  console.log(getFormText("pt-br", "title", "placeholder"));
-  
+  const getText = curryTextGetter("pt-br", "standard");
+  console.log(getText("description", "placeholder"));
+
   return (
     <form className="creator__form">
       <h2 className="form__section-title">Cabeçalho</h2>
       <div className="form__inputs">
         <MantineInput
-          label={getFormText(selectedLanguage, "title", "value")}
-          placeholder={getFormText(selectedLanguage, "title", "placeholder")}
+          label={getFieldText(selectedLanguage, "title", "value")}
+          placeholder={getFieldText(selectedLanguage, "title", "placeholder")}
         />
         <MantineInput
           label="Descrição"
