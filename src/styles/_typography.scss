@@ -1,0 +1,34 @@
+@use "./colors" as c;
+
+@mixin title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+// Subtitles
+@mixin s1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@mixin s2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@mixin base {
+  font-size: .875rem;
+  font-weight: 400;
+}
+
+@mixin description {
+  font-size: .875rem;
+  font-weight: lighter;
+}
+
+// Others
+
+@mixin img-placeholder {
+  color: c.$border;
+  font-weight: 700;
+}
