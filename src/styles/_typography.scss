@@ -17,11 +17,13 @@
 }
 
 @mixin base {
+  // 14px
   font-size: .875rem;
   font-weight: 400;
 }
 
 @mixin description {
+  // 14px
   font-size: .875rem;
   font-weight: lighter;
 }
@@ -31,4 +33,10 @@
 @mixin img-placeholder {
   color: c.$border;
   font-weight: 700;
+}
+
+@mixin img-placeholder-light {
+  // 14px
+  font-size: .875rem;
+  font-weight: 500;
 }
