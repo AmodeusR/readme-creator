@@ -1,6 +1,6 @@
 export type LanguageCode = "pt-br" | "en" | "ja" | "de" | "es";
 
-// Main Language Types and Object
+// Main Language fields types and object
 
 export type FieldContent = {
   value: string;
@@ -17,11 +17,11 @@ export type LanguageFields = {
   whatILearned: FieldContent;
 };
 
-type formLanguageTextsType = {
+type LanguageFieldsTextType = {
   [K in LanguageCode]: LanguageFields;
 };
 
-export const formLanguageTexts: formLanguageTextsType = {
+export const LanguageFieldsText: LanguageFieldsTextType = {
   "pt-br": {
     title: {
       value: "Título",
@@ -67,13 +67,31 @@ export const formLanguageTexts: formLanguageTextsType = {
     },
     description: {
       value: "Description",
-      placeholder: "Frontend Mentor - NFT preview card component",
+      placeholder: "This is a resolution for the Frontend Mentor's NFT Preview Card Component challenge.",
       description: "a short description of the project's objective",
     },
     challenges: {
       value: "Challenges",
       placeholder:
         "Write here the challenges to be surpassed or that showed up in the project. Separate it pressing Return",
+      description: undefined,
+    },
+    links: {
+      value: "Links",
+      placeholder:
+        "- URL for the website - [Cloudfare](https://fm--nft-preview-card.pages.dev/)",
+      description: "write in markdown",
+    },
+    developedWith: {
+      value: "Developed with...",
+      placeholder:
+        "Write the stack used for completing the challenge. Separate them by pressing enter",
+      description: undefined,
+    },
+    whatILearned: {
+      value: "What I learned",
+      placeholder:
+        "With this simple project, I learned many possibilities with Sass! Sass has proven to be more and more incredible, not only as a very useful technology, but also splendid for wariting CSS in a very fast, better and practical way!",
       description: undefined,
     },
   },
@@ -83,7 +101,7 @@ export const formLanguageTexts: formLanguageTextsType = {
 
 };
 
-// Exception fields type and object
+// Extended language fields types and objects
 
 export type ExtendedLanguageFields = {
   screenCaptures: {
@@ -115,7 +133,7 @@ type ExtendedFieldLanguageType = {
   [K in LanguageCode]: ExtendedLanguageFields;
 };
 
-const extendedFieldsLanguageTexts: ExtendedFieldLanguageType = {
+export const extendedLanguageFieldsText: ExtendedFieldLanguageType = {
   "pt-br": {
     screenCaptures: {
       value: "Capturas de tela",
@@ -174,7 +192,64 @@ const extendedFieldsLanguageTexts: ExtendedFieldLanguageType = {
       }
     }
   },
-  en: {},
+  en: {
+    screenCaptures: {
+      value: "Screen captures",
+      subtitles: {
+        desktop: {
+          value: "Desktop",
+          placeholder: "Drop your image here",
+          description: undefined
+        },
+        tablet: {
+          value: "Tablet",
+          placeholder: "Drop your image here",
+          description: undefined
+        },
+        mobile: {
+          value: "Mobile",
+          placeholder: "Drop your image here",
+          description: undefined
+        },
+      },
+    },
+    usefulResources: {
+      value: "Useful resources",
+      subtitles: {
+        solution: {
+          value: "Solution",
+          placeholder: "Short description of the resource",
+          description: "Faced challenge/solution",
+        },
+        link: {
+          value: "Link",
+          placeholder: "Resource's link",
+          description: undefined,
+
+        },
+        description: {
+          value: "Description",
+          placeholder: "Long description about how this resource has helped you solving or overcome your problem more easily.",
+          description: undefined
+        }
+      },
+    },
+    references: {
+      value: "References",
+      subtitles: {
+        platform: {
+          value: "Website",
+          placeholder: "Website's name",
+          description: undefined
+        },
+        link: {
+          value: "Link",
+          placeholder: "Link for the website",
+          description: undefined
+        }
+      }
+    }
+  },
   // ja: {},
   // de: {},
   // ja: {},
