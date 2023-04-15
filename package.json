@@ -15,8 +15,10 @@
     "@mantine/hooks": "^5.10.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-router-dom": "^6.8.1",
-    "sass": "^1.58.1"
+    "sass": "^1.58.1",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
