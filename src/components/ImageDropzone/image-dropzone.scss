@@ -16,6 +16,7 @@
 
   &__title {
     @include t.img-placeholder;
+    text-align: center;
   }
   
   &:hover {
@@ -55,5 +56,10 @@
       }
 
     }
+  }
+
+  &:has(img) {
+    width: calc(100% + 3px);
+    border: none;
   }
 }
