@@ -1,62 +1,99 @@
-import { ExtendedLanguageFields } from "./../lang/form-fields-text";
+import { ExtendedLanguageFields, extendedLanguageFieldsText } from "./../lang/form-fields-text";
 import { LanguageCode } from "../lang/form-fields-text";
 import {
   FieldContent,
-  formLanguageTexts,
+  LanguageFieldsText,
   LanguageFields,
 } from "../lang/form-fields-text";
 
 type FieldOptions = keyof LanguageFields;
-type ExtendedFieldOptions = keyof ExtendedLanguageFields;
 type ContentOptions = keyof FieldContent;
 
-export function getFieldText(
-  langcode: LanguageCode,
+type Fields = keyof ExtendedLanguageFields
+type Subtitles<T extends Fields> = keyof ExtendedLanguageFields[T]["subtitles"]
+
+export type FieldTextGetter = (
   field: FieldOptions,
   valueToGet: ContentOptions
-) {
-  try {
-    const valueToReturn = formLanguageTexts[langcode][field][valueToGet];
-    return valueToReturn;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-    return formLanguageTexts["en"][field][valueToGet];
-  }
-}
+) => string | undefined;
+
+export type ExtendedFieldTextGetter = <T extends keyof ExtendedLanguageFields, >(
+  field: T,
+  subtitleToGet: Subtitles<T>,
+  subtitleValue: ContentOptions
+) => string | undefined;
+
+type CurryTextGetterType = FieldTextGetter | ExtendedFieldTextGetter;
 
 export function curryTextGetter(
   langcode: LanguageCode,
+  getterFunction: "standard"
+): FieldTextGetter
+
+export function curryTextGetter(
+  langcode: LanguageCode,
+  getterFunction: "extended"
+): ExtendedFieldTextGetter
+
+export function curryTextGetter<T extends keyof ExtendedLanguageFields>(
+  langcode: LanguageCode,
   getterFunction: "standard" | "extended"
-): (field: FieldOptions, valueToGet: ContentOptions) => string | undefined {
+): CurryTextGetterType {
   if (getterFunction === "standard") {
     return (field: FieldOptions, valueToGet: ContentOptions) => {
       try {
-        const valueToReturn = formLanguageTexts[langcode][field][valueToGet];
+        const valueToReturn = LanguageFieldsText[langcode][field][valueToGet];
         return valueToReturn;
       } catch (error) {
         if (error instanceof Error) {
+          console.error("Caught error on Field Text Getter:");
           console.error(error.message);
         }
-        return formLanguageTexts["en"][field][valueToGet];
+        return LanguageFieldsText["en"][field][valueToGet];
       }
     };
   } else {
-    return () => {
-      console.log("oi");
+    const extendedFieldTextGetter = (
+      field: T,
+      subtitleToGet: Subtitles<T>,
+      subtitleValue: ContentOptions
+    ) => {
+      try {
+        const languageObj = extendedLanguageFieldsText[langcode];
+        const fieldObj = languageObj[field];
+        // @ts-expect-error ts2536
+        const valueToReturn = fieldObj["subtitles"][subtitleToGet][subtitleValue];
+
+        return valueToReturn;
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error("Caught error on Extended Field Text Getter:");
+          console.error(error.message);
+          
+        }
+        // @ts-expect-error ts2536
+        return extendedLanguageFieldsText["en"][field]["subtitles"][subtitleToGet][subtitleValue];
+      }
     };
+    // Needed to be assertive because of unresolved error ts2322
+    return extendedFieldTextGetter as ExtendedFieldTextGetter;
   }
 }
 
-export function ExtendedFieldTextGetter(
-  langcode: LanguageCode,
-  field: ExtendedFieldOptions,
-  valueToGet: keyof ExtendedLanguageFields[typeof field],
-  subtitleValue?: ContentOptions
-) {
-  console.log(langcode);
-  console.log(field);
-  console.log(valueToGet);
-  console.log(subtitleValue);
-}
+// Not in use
+
+// export function extendedFieldTextGetter<T extends keyof ExtendedLanguageFields>(
+//   langcode: LanguageCode,
+//   field: T,
+//   subtitleToGet: keyof ExtendedLanguageFields[T]["subtitles"],
+//   subtitleValue?: ContentOptions
+// ) {
+//   console.log(langcode);
+//   console.log(field);
+//   console.log(subtitleToGet);
+//   console.log(subtitleValue);
+// }
+
+// export function getExtendedFieldTextTitle(langcode: LanguageCode, field: Fields) {
+//   return extendedLanguageFieldsText[langcode][field]["value"];
+// }
