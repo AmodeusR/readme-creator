@@ -1,8 +1,6 @@
 import { FieldTextGetter, curryTextGetter } from "../../utils/getFormText";
 import { LanguageCode } from "../../lang/form-fields-text";
-import MantineInput from "../MantineInput/MantineInput";
 import "./form.scss";
-import { ImageDropzone } from "../index";
 import Header from "./Header";
 import Overview from "./Overview";
 
@@ -18,7 +16,7 @@ type CreatorFormProps = {
 
 const CreatorForm = ({ selectedLanguage }: CreatorFormProps) => {
   const getFieldText = curryTextGetter(selectedLanguage, "standard");
-  const getExtendedFieldText = curryTextGetter(selectedLanguage, "extended");
+  // const getExtendedFieldText = curryTextGetter(selectedLanguage, "extended");
 
   return (
     <form className="creator__form">
