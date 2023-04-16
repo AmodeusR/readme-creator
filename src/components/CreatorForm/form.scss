@@ -1,16 +1,35 @@
+@use "/src/styles/typography" as t;
+
 .form {
   &__section-title {
     font-size: 1.75rem;
-    margin-bottom: 1rem;
   }
-
-  &__inputs {
+  
+  &__section {
+    padding-block: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  &__section {
-    padding-block: 1rem;
+  &__screen-captures {
+    display: flex;
+    gap: .5rem;
+    
+    .image-dropzone {
+      height: 13rem;
+
+      &__title {
+        @include t.img-placeholder-light;
+      }
+
+      .image__delete-background {
+        --position: 6px;
+        right: var(--position);
+        bottom: var(--position);
+        scale: .9;
+        
+      }
+    }
   }
 }
