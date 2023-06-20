@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { MultiSelect } from "@mantine/core";
 import { Tag } from "../../assets";
@@ -54,10 +56,10 @@ const allOptions = [
 ];
 
 // Input component
-const TagInput = () => {
+export default function TagInput() {
   const { classes } = useStyles();
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);  
-
+  
   return (
     <div>
       <MultiSelect
@@ -74,4 +76,3 @@ const TagInput = () => {
   );
 };
 
-export default TagInput;
