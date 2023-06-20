@@ -1,5 +1,5 @@
-import { ReactComponent as Delete } from "./delete.svg";
-import { ReactComponent as Tag } from "./tag.svg";
+import Delete from "./delete";
+import Tag from "./tag";
 
 export {
   Delete,
