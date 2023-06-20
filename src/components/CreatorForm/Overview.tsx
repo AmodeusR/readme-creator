@@ -4,11 +4,6 @@ import { SectionProps } from "./CreatorForm";
 import TagInput from "../TagInput/TagInput";
 
 const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
-  const screenCaptureStyle = {
-    fontSsize: "16px",
-    fontWeight: "500",
-    color: "#212529",
-  };
 
   return (
     <div className="form__section form__inputs">
@@ -19,11 +14,11 @@ const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
         description={getFieldText("challenges", "description")}
       />
       <div>
-        <p style={screenCaptureStyle}>Capturas de Tela</p>
+        <p className="form__screen-captures-title">Capturas de Tela</p>
         <div className="form__screen-captures">
-          <ImageDropzone selectedLanguage={selectedLanguage} />
-          <ImageDropzone selectedLanguage={selectedLanguage} />
-          <ImageDropzone selectedLanguage={selectedLanguage} />
+          <ImageDropzone selectedLanguage={selectedLanguage} size="small" />
+          <ImageDropzone selectedLanguage={selectedLanguage} size="small" />
+          <ImageDropzone selectedLanguage={selectedLanguage} size="small" />
         </div>
       </div>
       <TagInput />
