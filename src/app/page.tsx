@@ -1,7 +1,7 @@
+import Link from "next/link";
 import "./home.scss";
-import { Link } from "react-router-dom";
 
-const Home = () => {
+export default function Home () {
   return (
     <div className="home">
       <header className="home-header">
@@ -12,7 +12,7 @@ const Home = () => {
       </header>
 
       <main className="home-main">
-        <Link to="/criar" className="home-cta">
+        <Link href="/create" className="home-cta">
           Criar README
         </Link>
 
@@ -61,5 +61,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
