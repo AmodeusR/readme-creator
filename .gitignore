@@ -36,6 +36,3 @@ next-env.d.ts
 
 # my ignores
 old_pages/
-old/
-old
-old/*
