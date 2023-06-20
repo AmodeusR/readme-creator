@@ -4,7 +4,7 @@
 .creator {
   display: grid;
   grid-template-columns: 1fr 2px 1fr;
-  width: 100%;
+  width: min(85%, 80em);
   gap: 0 2rem;
   margin-top: 2rem;
   margin-bottom: 5rem;

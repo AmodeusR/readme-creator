@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { CreatorForm, CreatorLanguages } from "../../components";
 import { LanguageCode } from "../../lang/form-fields-text";
