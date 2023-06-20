@@ -15,21 +15,10 @@
   &__screen-captures {
     display: flex;
     gap: .5rem;
-    
-    .image-dropzone {
-      height: 13rem;
 
-      &__title {
-        @include t.img-placeholder-light;
-      }
-
-      .image__delete-background {
-        --position: 6px;
-        right: var(--position);
-        bottom: var(--position);
-        scale: .9;
-        
-      }
+    &-title {
+      font-weight: 500;
+      color: #212529;
     }
   }
 }

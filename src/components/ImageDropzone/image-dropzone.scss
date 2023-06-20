@@ -18,7 +18,7 @@
     @include t.img-placeholder;
     text-align: center;
   }
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -54,12 +54,26 @@
           opacity: 1;
         }
       }
-
     }
   }
 
   &:has(img) {
     width: calc(100% + 3px);
     border: none;
+  }
+
+  &.small {
+    height: 12rem;
+
+    .image-dropzone__title {
+        @include t.img-placeholder-sm;
+    }
+    
+    .image__delete-background {
+      --position: 6px;
+      right: var(--position);
+      bottom: var(--position);
+      scale: .9;
+    }
   }
 }
