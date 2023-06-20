@@ -1,6 +1,9 @@
 import { createStyles, TextInput, TextInputProps } from "@mantine/core";
 
 const useStyles = createStyles(() => ({
+  root: {
+    fontFamily: "inherit",
+  },
   input: {
     "&:focus": {
       borderColor: "#0194FE",
@@ -16,7 +19,7 @@ const MantineInput = ({...props}: TextInputProps) => {
 
   return (
     <TextInput
-      classNames={{ input: classes.input, description: classes.description }}
+      classNames={{ input: classes.input, description: classes.description, root: classes.root}}
       label="Título"
       size="md"
       {...props}
