@@ -49,7 +49,7 @@ export const LanguageFieldsText: LanguageFieldsTextType = {
     developedWith: {
       value: "Desenvolvido com...",
       placeholder:
-        "Escreva as tecnologias usadas para completar o desafio. Separe-os pressionando Enter",
+        "Escreva as techs usadas para completar o desafio. Separe-os com Enter",
       description: undefined,
     },
     whatILearned: {
