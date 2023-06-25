@@ -3,21 +3,7 @@
 import { useState } from "react";
 import { MultiSelect } from "@mantine/core";
 import { Tag } from "../../assets";
-import { createStyles } from "@mantine/core";
-
-// Input styles
-const useStyles = createStyles(() => ({
-  icon: {
-    marginLeft: "2px",
-  },
-  value: {
-    color: "white",
-    backgroundColor: "hsl(346, 99%, 65%)",
-  },
-  defaultValueRemove: {
-    color: "white"
-  }
-}));
+import { useStyles } from "@/utils/mantineStyles";
 
 // Input options
 const basic = ["HTML", "CSS", "Javascript", "Sass"];
@@ -55,24 +41,38 @@ const allOptions = [
   ...others,
 ];
 
-// Input component
-export default function TagInput() {
-  const { classes } = useStyles();
-  const [chosenOptions, setChosenOptions] = useState<string[]>([]);  
-  
-  return (
-    <div>
-      <MultiSelect
-        data={allOptions}
-        label="Título"
-        size="md"
-        searchable
-        icon={<Tag />}
-        classNames={{ icon: classes.icon, value: classes.value, defaultValueRemove: classes.defaultValueRemove }}
-        value={chosenOptions}
-        onChange={setChosenOptions}
-      />
-    </div>
-  );
+type TagInputProps = {
+  label?: string;
+  description?: string;
+  placeholder?: string;
 };
+// Input component
+export default function TagInput({
+  label,
+  placeholder,
+  description,
+}: TagInputProps) {
+  const { classes } = useStyles();
+  const [chosenOptions, setChosenOptions] = useState<string[]>([]);
 
+  return (
+    <MultiSelect
+      data={allOptions}
+      label={label}
+      placeholder={placeholder}
+      description={description}
+      size="md"
+      searchable
+      icon={<Tag />}
+      classNames={{
+        icon: classes.icon,
+        value: classes.value,
+        defaultValueRemove: classes.defaultValueRemove,
+        root: classes.root,
+        label: classes.label,
+      }}
+      value={chosenOptions}
+      onChange={setChosenOptions}
+    />
+  );
+}
