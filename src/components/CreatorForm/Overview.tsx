@@ -1,10 +1,9 @@
 import MantineInput from "../MantineInput/MantineInput";
 import ImageDropzone from "../ImageDropzone/ImageDropzone";
 import { SectionProps } from "./CreatorForm";
-import TagInput from "../TagInput/TagInput";
+import TextareaInput from "../TextareaInput/TextareaInput";
 
 const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
-
   return (
     <div className="form__section form__inputs">
       <h2 className="form__section-title">Sessão Geral</h2>
@@ -21,7 +20,11 @@ const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
           <ImageDropzone selectedLanguage={selectedLanguage} size="small" />
         </div>
       </div>
-      <TagInput />
+      <TextareaInput
+        label={getFieldText("links", "value")}
+        placeholder={getFieldText("links", "placeholder")}
+        description={getFieldText("links", "description")}
+      />
     </div>
   );
 };
