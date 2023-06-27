@@ -1,45 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { MultiSelect } from "@mantine/core";
+import { MultiSelect, MultiSelectProps } from "@mantine/core";
 import { Tag } from "../../assets";
 import { useStyles } from "@/utils/mantineStyles";
-
-// Input options
-const basic = ["HTML", "CSS", "Javascript", "Sass"];
-const jsFrameworks = [
-  "React",
-  "Vue",
-  "Angular",
-  "Preact",
-  "Svelte",
-  "Remix",
-  "NextJS",
-  "Gatsby",
-  "SolidJS",
-  "NuxtJS",
-];
-const cssFrameworks = ["Bootstrap", "TailwindCSS", "Semantic UI", "Bulma"];
-const componentLibraries = [
-  "Mantine",
-  "Radix UI",
-  "Material UI",
-  "Daisy UI",
-  "Chakra UI",
-];
-const backend = ["NodeJS", "Deno", "Firebase", "MySQL", "PostGRE", "SQLite"];
-const desktopAppCreators = ["Electron", "Tauri", "Flutter"];
-const others = ["Typescript", "React Native", "Ionic"];
-
-const allOptions = [
-  ...basic,
-  ...jsFrameworks,
-  ...cssFrameworks,
-  ...componentLibraries,
-  ...backend,
-  ...desktopAppCreators,
-  ...others,
-];
+import { log } from "console";
 
 type TagInputProps = {
   label?: string;
@@ -48,19 +13,13 @@ type TagInputProps = {
 };
 // Input component
 export default function TagInput({
-  label,
-  placeholder,
-  description,
-}: TagInputProps) {
+  ...props
+}: MultiSelectProps) {
   const { classes } = useStyles();
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
-
+  
   return (
     <MultiSelect
-      data={allOptions}
-      label={label}
-      placeholder={placeholder}
-      description={description}
       size="md"
       searchable
       icon={<Tag />}
@@ -73,6 +32,7 @@ export default function TagInput({
       }}
       value={chosenOptions}
       onChange={setChosenOptions}
+      {...props}
     />
   );
 }
