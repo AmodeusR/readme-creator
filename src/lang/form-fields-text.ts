@@ -49,13 +49,13 @@ export const LanguageFieldsText: LanguageFieldsTextType = {
     developedWith: {
       value: "Desenvolvido com...",
       placeholder:
-        "Escreva as techs usadas para completar o desafio. Separe-os com Enter",
+        "Escreva as techs usadas para completar o desafio. Separe-os com Enter.",
       description: undefined,
     },
     whatILearned: {
       value: "O que aprendi",
       placeholder:
-        "Com este projeto simples, eu aprendi várias possibilidades com Sass! Sass tem se demonstrado cada vez mais e mais incrível, não somente como uma tecnologia muito útil, mas esplêndida para escrever CSS de uma forma muito mais rápida, melhor e prática!",
+        "Escreva um pouco sobre o que você aprendeu, dificuldades e como as superou.",
       description: undefined,
     },
   },
