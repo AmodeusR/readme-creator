@@ -1,5 +1,6 @@
 @use "/src/styles/colors" as c;
 @use "/src/styles/typography" as t;
+@use "/src/styles/_mix" as mix;
 
 .image-dropzone {
   position: relative;
@@ -32,29 +33,7 @@
   }
 
   .image__delete {
-    width: .9rem;
-    fill: c.$border;
-    opacity: .8;
-    transition: opacity 300ms ease;
-
-    &-background {
-      display: flex;
-      position: absolute;
-      background-color: hsl(217, 24%, 61%, 80%);
-      bottom: 20px;
-      right: 20px;
-      padding: .9rem;
-      border-radius: 50%;
-      transition: background-color 300ms ease;
-
-      &:hover {
-        background-color: hsl(217, 24%, 61%, 100%);
-
-        .image__delete {
-          opacity: 1;
-        }
-      }
-    }
+    @include mix.delete;
   }
 
   &:has(img) {
