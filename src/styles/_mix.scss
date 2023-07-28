@@ -1,8 +1,36 @@
+@use "./colors" as c;
+
 $tablet: 50em;
 $desktop: 80em;
 
 @mixin media($media-width) {
   @media (min-width: $media-width) {
-    @content
+    @content;
   }
+}
+
+@mixin delete {
+  width: .9rem;
+    fill: c.$border;
+    opacity: .8;
+    transition: opacity 300ms ease;
+
+    &-background {
+      display: flex;
+      position: absolute;
+      background-color: hsl(217, 24%, 61%, 80%);
+      bottom: 20px;
+      right: 20px;
+      padding: .9rem;
+      border-radius: 50%;
+      transition: background-color 300ms ease;
+
+      &:hover {
+        background-color: hsl(217, 24%, 61%, 100%);
+
+        .image__delete {
+          opacity: 1;
+        }
+      }
+    }
 }
