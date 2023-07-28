@@ -1,10 +1,13 @@
 @use "/src/styles/_colors" as c;
+@use "/src/styles/_mix" as mix;
 
 .item-register {
   &__row-1 {
     display: flex;
+    align-items: flex-end;
     gap: .5rem;
     justify-content: stretch;
+    padding-bottom: .5rem;
 
     & > * {
       flex-grow: 2;
@@ -23,5 +26,39 @@
     align-self: flex-end;
     background-color: c.$button;
     flex-grow: 1;
+  }
+}
+
+.item-list {
+  position: relative;
+  list-style: none;
+  padding-left: 0;
+  &__title {
+    padding-top: 1rem;
+    font-weight: normal;
+  }
+
+  &__item > * {
+    color: c.$text-placeholder;
+  }
+
+  &__head {
+    display: flex;
+    
+    span {
+      flex-grow: 1;
+    }
+  }
+
+  &__button, &__delete {
+    position: absolute;
+    right: 0;
+    @include mix.delete;
+    transition: fill 50ms ease;
+    outline: none;
+
+    &:hover {
+      fill: crimson;
+    }
   }
 }
