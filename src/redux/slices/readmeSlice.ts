@@ -2,23 +2,33 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 type InitialState = {
-  text: string;
+  header: {
+    title: string;
+    description: string;
+
+  }
 }
 
 const initialState: InitialState = {
-  text: ""
+  header: {
+    title: "",
+    description: "",
+  }
 }
 
 const readmeSlice = createSlice({
   name: "readme",
   initialState,
   reducers: {
-    setText: (state, action) => {
-      state.text = action.payload
+    setHeaderTitle: (state, action: PayloadAction<string>) => {
+      state.header.title = action.payload;
+    },
+    setHeaderDescription: (state, action: PayloadAction<string>) => {
+      state.header.description = action.payload;
     }
   }
 });
 
-export const { setText } = readmeSlice.actions;
+export const { setHeaderTitle, setHeaderDescription } = readmeSlice.actions;
 export default readmeSlice.reducer;
 
