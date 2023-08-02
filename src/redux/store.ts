@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import readmeSlice from "./slices/readmeSlice";
+import readmeReducer from "./slices/readmeSlice";
 
 export const store = configureStore({
   reducer: {
-    readme: readmeSlice
+    readme: readmeReducer
   }
 });
 
