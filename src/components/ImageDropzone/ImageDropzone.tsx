@@ -6,18 +6,25 @@ import { Delete } from "../../assets";
 import { curryTextGetter } from "../../utils/getFormText";
 import { LanguageCode } from "../../lang/form-fields-text";
 import "./image-dropzone.scss";
+import { useAppDispatch } from "@/redux/hooks";
+import { removeHeaderImage } from "@/redux/slices/readmeSlice";
+import { ActionCreatorWithPayload, ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 
-interface Image extends File {
+export interface Image extends File {
   preview?: string;
 }
 
 type ImageDropzoneProps = {
-  selectedLanguage: LanguageCode
-  size?: "small" | "normal"
+  selectedLanguage: LanguageCode;
+  size?: "small" | "normal";
+  setImageFunction: ActionCreatorWithPayload<Image>;
+  removeImageFunction: ActionCreatorWithoutPayload;
+  imageOrigin: Image | null;
 }
 
-const ImageDropzone = ({ selectedLanguage, size = "normal" }: ImageDropzoneProps) => {
+const ImageDropzone = ({ selectedLanguage, size = "normal", setImageFunction, removeImageFunction, imageOrigin }: ImageDropzoneProps) => {
   const getExtendedTextForm = curryTextGetter(selectedLanguage, "extended");
+  const dispatch = useAppDispatch();
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
@@ -33,24 +40,24 @@ const ImageDropzone = ({ selectedLanguage, size = "normal" }: ImageDropzoneProps
           preview
         });
       });
-      
-      setFiles(files);
+
+      dispatch(setImageFunction(files[0]));
     }
   });
-  const [files, setFiles] = useState<Image[]>([]);
 
   const removeImage = (e: MouseEvent<HTMLButtonElement>) => {
-    setFiles([]);
+    dispatch(removeImageFunction());
 
     e.stopPropagation();
   };
+  
   return (
     <>
       <div className={`image-dropzone ${isDragActive ? "image-dropzone__dragover": ""} ${size ?? "small"}`} {...getRootProps()}>
         <input {...getInputProps()} />
-        {files[0]?.preview ? (
+        {imageOrigin?.preview ? (
           <>
-            <img src={files[0].preview} alt="" className="image-dropzone__image" />
+            <img src={imageOrigin.preview} alt="" className="image-dropzone__image" />
             <button type="button" className="image__delete-background" onClick={(e) => removeImage(e)}>
               <Delete className="image__delete" />
             </button>
