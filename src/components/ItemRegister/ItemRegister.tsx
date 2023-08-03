@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, MouseEvent, useReducer } from "react";
+import { useState, useReducer } from "react";
 import { TextInputProps, TextareaProps } from "@mantine/core";
 import MantineInput from "../MantineInput/MantineInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import "./item-register.scss";
 import { Plus } from "@/assets";
 import ListItem from "../ListItem/ListItem";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "@reduxjs/toolkit";
 import {
   actionTypes,
   initialState,
@@ -37,21 +37,21 @@ const ItemRegister = ({
   const [state, dispatch] = useReducer(reducer, initialState);
   const [items, setItems] = useState<Item[]>([
     {
-      id: uuidv4(),
+      id: nanoid(),
       title: "There is no way",
       link: "https://github.com/asjdoasjdoadjsoasjdaosjao",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, laborum voluptatum sunt nostrum facilis quia illo officiis quo rerum possimus delectus similique dolore exercitationem sapiente mollitia sint, at labore non.",
     },
     {
-      id: uuidv4(),
+      id: nanoid(),
       title: "Welcome Home",
       link: "https://github.com/",
       description:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos, nesciunt!",
     },
     {
-      id: uuidv4(),
+      id: nanoid(),
       title: "Subsistis Teminis",
       link: "https://github.com/",
       description:
@@ -65,7 +65,7 @@ const ItemRegister = ({
       return;
     }
     const newItem: Item = {
-      id: uuidv4(),
+      id: nanoid(),
       title: state.title,
       link: state.link,
       description: state.description

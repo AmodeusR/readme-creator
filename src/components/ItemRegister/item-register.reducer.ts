@@ -1,5 +1,3 @@
-import { Reducer } from "react";
-
 export const initialState = {
   title: "",
   link: "",
