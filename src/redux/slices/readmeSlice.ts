@@ -1,8 +1,7 @@
 import {
-  Image,
-  ImageWithPosition,
+  Image
 } from "@/components/ImageDropzone/ImageDropzone";
-import { Positions } from "@/components/ImageDropzone/SmallImagreDropzone";
+import { ImageWithPosition, Positions } from "@/components/ImageDropzone/SmallImagreDropzone";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -64,7 +63,6 @@ const readmeSlice = createSlice({
       state,
       action: PayloadAction<ImageWithPosition>
     ) => {
-      if (!action.payload.position) return;
       const position = action.payload.position;
       state.overview.images[position] = action.payload.payload;
     },
