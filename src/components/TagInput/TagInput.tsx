@@ -4,7 +4,6 @@ import { useState } from "react";
 import { MultiSelect, MultiSelectProps } from "@mantine/core";
 import { Tag } from "../../assets";
 import { useStyles } from "@/utils/mantineStyles";
-import { log } from "console";
 
 type TagInputProps = {
   label?: string;
