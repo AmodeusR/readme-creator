@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { useDropzone } from "react-dropzone";
 import { Delete } from "../../assets";
 import { curryTextGetter } from "../../utils/getFormText";
 import { LanguageCode } from "../../lang/form-fields-text";
 import "./image-dropzone.scss";
 import { useAppDispatch } from "@/redux/hooks";
-import { removeHeaderImage } from "@/redux/slices/readmeSlice";
 import { ActionCreatorWithPayload, ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 
 export interface Image extends File {
