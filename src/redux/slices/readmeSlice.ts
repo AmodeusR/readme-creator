@@ -10,7 +10,7 @@ type InitialState = {
     title: string;
     description: string;
     image: Image | null;
-  };
+  },
   overview: {
     challenges: string;
     images: {
@@ -19,7 +19,10 @@ type InitialState = {
       3: Image | null;
     };
     links: string;
-  };
+  },
+  process: {
+    developedWith: string[];
+  }
 };
 
 const initialState: InitialState = {
@@ -37,6 +40,9 @@ const initialState: InitialState = {
     },
     links: "",
   },
+  process: {
+    developedWith: [],
+  }
 };
 
 const readmeSlice = createSlice({
@@ -72,6 +78,9 @@ const readmeSlice = createSlice({
     setLinks: (state, action: PayloadAction<string>) => {
       state.overview.links = action.payload;
     },
+    setDevelopedWith: (state, action: PayloadAction<string[]>) => {
+      state.process.developedWith = action.payload;  
+    }
   },
 });
 
@@ -83,6 +92,7 @@ export const {
   setChallenges,
   setScreenshots,
   removeScreenshots,
-  setLinks
+  setLinks,
+  setDevelopedWith,
 } = readmeSlice.actions;
 export default readmeSlice.reducer;
