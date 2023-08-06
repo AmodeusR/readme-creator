@@ -1,8 +1,12 @@
+"use client";
+
 import { developedWithOptions } from "@/utils/developedWithOptions";
 import { SectionProps } from "./CreatorForm";
 import TagInput from "../TagInput/TagInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import ItemRegister from "../ItemRegister/ItemRegister";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setWhatILearned } from "@/redux/slices/readmeSlice";
 
 const Process = ({
   getFieldText,
@@ -10,6 +14,8 @@ const Process = ({
   selectedLanguage,
 }: SectionProps) => {
   if (getExtendedFieldText === undefined) return;
+  const { whatILearned } = useAppSelector(state => state.readme.process);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="form__section">
@@ -24,6 +30,8 @@ const Process = ({
         label={getFieldText("whatILearned", "value")}
         placeholder={getFieldText("whatILearned", "placeholder")}
         description={getFieldText("whatILearned", "description")}
+        value={whatILearned}
+        onChange={(e) => dispatch(setWhatILearned(e.target.value))}
       />
       {/* Useful resources */}
       <ItemRegister
