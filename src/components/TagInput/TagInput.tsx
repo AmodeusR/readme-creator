@@ -1,21 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MultiSelect, MultiSelectProps } from "@mantine/core";
 import { Tag } from "../../assets";
 import { useStyles } from "@/utils/mantineStyles";
+import { useAppDispatch } from "@/redux/hooks";
+import { setDevelopedWith } from "@/redux/slices/readmeSlice";
 
-type TagInputProps = {
-  label?: string;
-  description?: string;
-  placeholder?: string;
-};
 // Input component
 export default function TagInput({
   ...props
 }: MultiSelectProps) {
   const { classes } = useStyles();
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setDevelopedWith(chosenOptions));
+  }, [chosenOptions]);
   
   return (
     <MultiSelect
