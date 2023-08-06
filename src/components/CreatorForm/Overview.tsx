@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   removeScreenshots,
   setChallenges,
+  setLinks,
   setScreenshots,
 } from "@/redux/slices/readmeSlice";
 import SmallImageDropzone from "../ImageDropzone/SmallImagreDropzone";
@@ -55,6 +56,8 @@ const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
         label={getFieldText("links", "value")}
         placeholder={getFieldText("links", "placeholder")}
         description={getFieldText("links", "description")}
+        value={links}
+        onChange={(e) => dispatch(setLinks(e.target.value))}
       />
     </div>
   );

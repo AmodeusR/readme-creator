@@ -68,7 +68,10 @@ const readmeSlice = createSlice({
     },
     removeScreenshots: (state, action: PayloadAction<Positions>) => {
       state.overview.images[action.payload] = null;
-    }
+    },
+    setLinks: (state, action: PayloadAction<string>) => {
+      state.overview.links = action.payload;
+    },
   },
 });
 
@@ -79,6 +82,7 @@ export const {
   removeHeaderImage,
   setChallenges,
   setScreenshots,
-  removeScreenshots
+  removeScreenshots,
+  setLinks
 } = readmeSlice.actions;
 export default readmeSlice.reducer;
