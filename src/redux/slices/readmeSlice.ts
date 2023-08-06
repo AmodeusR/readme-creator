@@ -22,6 +22,7 @@ type InitialState = {
   },
   process: {
     developedWith: string[];
+    whatILearned: string;
   }
 };
 
@@ -42,6 +43,7 @@ const initialState: InitialState = {
   },
   process: {
     developedWith: [],
+    whatILearned: "",
   }
 };
 
@@ -80,7 +82,10 @@ const readmeSlice = createSlice({
     },
     setDevelopedWith: (state, action: PayloadAction<string[]>) => {
       state.process.developedWith = action.payload;  
-    }
+    },
+    setWhatILearned: (state, action: PayloadAction<string>) => {
+      state.process.whatILearned = action.payload;
+    },
   },
 });
 
@@ -94,5 +99,6 @@ export const {
   removeScreenshots,
   setLinks,
   setDevelopedWith,
+  setWhatILearned,
 } = readmeSlice.actions;
 export default readmeSlice.reducer;
