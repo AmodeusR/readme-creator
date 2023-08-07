@@ -1,7 +1,7 @@
 import {
   Image
 } from "@/components/ImageDropzone/ImageDropzone";
-import { ImageWithPosition, Positions } from "@/components/ImageDropzone/SmallImagreDropzone";
+import { ImageWithPosition, Positions } from "@/components/ImageDropzone/SmallImageDropzone";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 

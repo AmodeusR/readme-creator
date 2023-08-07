@@ -8,7 +8,7 @@ import {
   setLinks,
   setScreenshots,
 } from "@/redux/slices/readmeSlice";
-import SmallImageDropzone from "../ImageDropzone/SmallImagreDropzone";
+import SmallImageDropzone from "../ImageDropzone/SmallImageDropzone";
 
 const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
   const { challenges, images, links } = useAppSelector(
