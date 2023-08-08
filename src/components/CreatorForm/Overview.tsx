@@ -1,5 +1,4 @@
 import MantineInput from "../MantineInput/MantineInput";
-import { SectionProps } from "./CreatorForm";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
@@ -9,12 +8,15 @@ import {
   setScreenshots,
 } from "@/redux/slices/readmeSlice";
 import SmallImageDropzone from "../ImageDropzone/SmallImageDropzone";
+import { curryTextGetter } from "@/utils/getFormText";
 
-const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
+const Overview = () => {
+  const dispatch = useAppDispatch();
   const { challenges, images, links } = useAppSelector(
     (state) => state.readme.overview
   );
-  const dispatch = useAppDispatch();
+  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const getFieldText = curryTextGetter(creatorFormLanguage, "standard");
 
   return (
     <div className="form__section form__inputs">
@@ -30,21 +32,18 @@ const Overview = ({ getFieldText, selectedLanguage }: SectionProps) => {
         <p className="form__screen-captures-title">Capturas de Tela</p>
         <div className="form__screen-captures">
           <SmallImageDropzone
-            selectedLanguage={selectedLanguage}
             imageOrigin={images[1]}
             setImageFunction={setScreenshots}
             removeImageFunction={removeScreenshots}
             position={1}
           />
           <SmallImageDropzone
-            selectedLanguage={selectedLanguage}
             imageOrigin={images[2]}
             setImageFunction={setScreenshots}
             removeImageFunction={removeScreenshots}
             position={2}
           />
           <SmallImageDropzone
-            selectedLanguage={selectedLanguage}
             imageOrigin={images[3]}
             setImageFunction={setScreenshots}
             removeImageFunction={removeScreenshots}
