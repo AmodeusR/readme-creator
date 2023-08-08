@@ -11,14 +11,14 @@ const Author = ({ selectedLanguage, getExtendedFieldText}: SectionProps) => {
         title="Referências"
         fields={{
           left: {
-            label: getExtendedFieldText("references", "platform", "value"),
-            description: getExtendedFieldText("references", "platform", "description"),
-            placeholder: getExtendedFieldText("references", "platform", "placeholder"),
+            label: getExtendedFieldText("socials", "platform", "value"),
+            description: getExtendedFieldText("socials", "platform", "description"),
+            placeholder: getExtendedFieldText("socials", "platform", "placeholder"),
           },
           right: {
-            label: getExtendedFieldText("references", "link", "value"),
-            description: getExtendedFieldText("references", "link", "description"),
-            placeholder: getExtendedFieldText("references", "link", "placeholder"),
+            label: getExtendedFieldText("socials", "link", "value"),
+            description: getExtendedFieldText("socials", "link", "description"),
+            placeholder: getExtendedFieldText("socials", "link", "placeholder"),
           },
         }}
       />
