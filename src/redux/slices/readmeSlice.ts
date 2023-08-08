@@ -102,6 +102,13 @@ const readmeSlice = createSlice({
       const newItems = state.process.usefulResources.filter(item => item.id !== action.payload);
       state.process.usefulResources = newItems;
     },
+    addSocialsItem: (state, action: PayloadAction<Item>) => {
+      state.author.socials.push(action.payload);
+    },
+    removeSocialsItem: (state, action: PayloadAction<string>) => {
+      const newItems = state.author.socials.filter(item => item.id != action.payload);
+      state.author.socials = newItems;
+    }
   },
 });
 
@@ -118,5 +125,7 @@ export const {
   setWhatILearned,
   addUsefulResourcesItem,
   removeUsefulResourcesItem,
+  addSocialsItem,
+  removeSocialsItem
 } = readmeSlice.actions;
 export default readmeSlice.reducer;
