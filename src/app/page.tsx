@@ -1,7 +1,7 @@
 import Link from "next/link";
 import "./home.scss";
 
-export default function Home () {
+export default function Home() {
   return (
     <div className="home">
       <header className="home-header">
