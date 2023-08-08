@@ -1,21 +1,19 @@
 "use client";
 
 import { developedWithOptions } from "@/utils/developedWithOptions";
-import { SectionProps } from "./CreatorForm";
 import TagInput from "../TagInput/TagInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setWhatILearned } from "@/redux/slices/readmeSlice";
 import UsefulResourcesItems from "../UsefulResourcesItems/UsefulResourcesItems";
+import { curryTextGetter } from "@/utils/getFormText";
 
-const Process = ({
-  getFieldText,
-  getExtendedFieldText,
-  selectedLanguage,
-}: SectionProps) => {
-  if (getExtendedFieldText === undefined) return;
-  const { whatILearned } = useAppSelector(state => state.readme.process);
+const Process = () => {
   const dispatch = useAppDispatch();
+  const { whatILearned } = useAppSelector(state => state.readme.process);
+  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const getFieldText = curryTextGetter(creatorFormLanguage, "standard");
+  const getExtendedFieldText = curryTextGetter(creatorFormLanguage, "extended");
 
   return (
     <div className="form__section">
