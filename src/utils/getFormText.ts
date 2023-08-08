@@ -71,8 +71,9 @@ export function curryTextGetter<T extends keyof ExtendedLanguageFields>(
           console.error(error.message);
           
         }
+        // TODO: change "pt-br" to "en" when finished form fields language
         // @ts-expect-error ts2536
-        return extendedLanguageFieldsText["en"][field]["subtitles"][subtitleToGet][subtitleValue];
+        return extendedLanguageFieldsText["pt-br"][field]["subtitles"][subtitleToGet][subtitleValue];
       }
     };
     // Needed to be assertive because of unresolved error ts2322
