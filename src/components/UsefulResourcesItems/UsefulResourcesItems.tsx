@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { TextInputProps, TextareaProps } from "@mantine/core";
 import MantineInput from "../MantineInput/MantineInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
@@ -10,7 +10,10 @@ import ListItem, { Item } from "../ListItem/ListItem";
 import { nanoid } from "@reduxjs/toolkit";
 import { actionTypes, initialState, reducer } from "./useful-resources.reducer";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addUsefulResourcesItem, removeUsefulResourcesItem } from "@/redux/slices/readmeSlice";
+import {
+  addUsefulResourcesItem,
+  removeUsefulResourcesItem,
+} from "@/redux/slices/readmeSlice";
 
 type UsefulResourcesItemsProps = {
   fields: {
@@ -21,11 +24,14 @@ type UsefulResourcesItemsProps = {
   title: string;
 };
 
-const UsefulResourcesItems = ({ fields, textarea, title }: UsefulResourcesItemsProps) => {
+const UsefulResourcesItems = ({
+  fields,
+  textarea,
+  title,
+}: UsefulResourcesItemsProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [items, setItems] = useState<Item[]>([]);
   const reduxDispatch = useAppDispatch();
-  const { usefulResources } = useAppSelector(state => state.readme.process);
+  const { usefulResources } = useAppSelector((state) => state.readme.process);
 
   const addItem = () => {
     if (state.title.length === 0) {
@@ -78,28 +84,24 @@ const UsefulResourcesItems = ({ fields, textarea, title }: UsefulResourcesItemsP
           <Plus />
         </button>
       </div>
-      {
-        <>
-          <TextareaInput
-            {...textarea}
-            value={state.description}
-            onChange={(e) =>
-              dispatch({
-                type: actionTypes.CHANGE_DESCRIPTION,
-                payload: e.target.value,
-              })
-            }
-          />
-          <h4 className="item-list__title">Adicionados</h4>
-          <ul className="item-list">
-            {usefulResources
-              .map((item) => (
-                <ListItem item={item} deleteItem={deleteItem} key={item.id} />
-              ))
-              .reverse()}
-          </ul>
-        </>
-      }
+      <TextareaInput
+        {...textarea}
+        value={state.description}
+        onChange={(e) =>
+          dispatch({
+            type: actionTypes.CHANGE_DESCRIPTION,
+            payload: e.target.value,
+          })
+        }
+      />
+      <h4 className="item-list__title">Adicionados</h4>
+      <ul className="item-list">
+        {usefulResources
+          .map((item) => (
+            <ListItem item={item} deleteItem={deleteItem} key={item.id} />
+          ))
+          .reverse()}
+      </ul>
     </div>
   );
 };
