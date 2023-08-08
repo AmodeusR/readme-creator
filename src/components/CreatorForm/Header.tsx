@@ -2,7 +2,6 @@
 
 import MantineInput from "../MantineInput/MantineInput";
 import ImageDropzone from "../ImageDropzone/ImageDropzone";
-import { SectionProps } from "./CreatorForm";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   removeHeaderImage,
@@ -10,10 +9,13 @@ import {
   setHeaderImage,
   setHeaderTitle,
 } from "@/redux/slices/readmeSlice";
+import { curryTextGetter } from "@/utils/getFormText";
 
-const Header = ({ getFieldText, selectedLanguage }: SectionProps) => {
-  const { header } = useAppSelector((state) => state.readme);
+const Header = () => {
   const dispatch = useAppDispatch();
+  const { header } = useAppSelector((state) => state.readme);
+  const { creatorFormLanguage } = useAppSelector((state) => state.language);
+  const getFieldText = curryTextGetter(creatorFormLanguage, "standard");
 
   return (
     <div className="form__section">
@@ -34,7 +36,6 @@ const Header = ({ getFieldText, selectedLanguage }: SectionProps) => {
         onChange={(e) => dispatch(setHeaderDescription(e.target.value))}
       />
       <ImageDropzone
-        selectedLanguage={selectedLanguage}
         setImageFunction={setHeaderImage}
         imageOrigin={header.image}
         removeImageFunction={removeHeaderImage}
