@@ -2,6 +2,7 @@ import {
   Image
 } from "@/components/ImageDropzone/ImageDropzone";
 import { ImageWithPosition, Positions } from "@/components/ImageDropzone/SmallImageDropzone";
+import { Item } from "@/components/ListItem/ListItem";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -23,6 +24,10 @@ type InitialState = {
   process: {
     developedWith: string[];
     whatILearned: string;
+    usefulResources: Item[];
+  },
+  author: {
+    socials: Item[];
   }
 };
 
@@ -44,6 +49,10 @@ const initialState: InitialState = {
   process: {
     developedWith: [],
     whatILearned: "",
+    usefulResources: []
+  },
+  author: {
+    socials: []
   }
 };
 
@@ -86,6 +95,13 @@ const readmeSlice = createSlice({
     setWhatILearned: (state, action: PayloadAction<string>) => {
       state.process.whatILearned = action.payload;
     },
+    addUsefulResourcesItem: (state, action: PayloadAction<Item>) => {
+      state.process.usefulResources.push(action.payload);
+    },
+    removeUsefulResourcesItem: (state, action: PayloadAction<string>) => {
+      const newItems = state.process.usefulResources.filter(item => item.id !== action.payload);
+      state.process.usefulResources = newItems;
+    },
   },
 });
 
@@ -100,5 +116,7 @@ export const {
   setLinks,
   setDevelopedWith,
   setWhatILearned,
+  addUsefulResourcesItem,
+  removeUsefulResourcesItem,
 } = readmeSlice.actions;
 export default readmeSlice.reducer;
