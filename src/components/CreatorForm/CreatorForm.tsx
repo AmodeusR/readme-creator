@@ -8,6 +8,7 @@ import "./form.scss";
 import Header from "./Header";
 import Overview from "./Overview";
 import Process from "./Process";
+import Author from "./Author";
 
 export type SectionProps = {
   getFieldText: FieldTextGetter;
@@ -31,6 +32,11 @@ const CreatorForm = ({ selectedLanguage }: CreatorFormProps) => {
         selectedLanguage={selectedLanguage}
       />
       <Process
+        getFieldText={getFieldText}
+        getExtendedFieldText={getExtendedFieldText}
+        selectedLanguage={selectedLanguage}
+      />
+      <Author
         getFieldText={getFieldText}
         getExtendedFieldText={getExtendedFieldText}
         selectedLanguage={selectedLanguage}
