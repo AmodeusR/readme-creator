@@ -1,8 +1,12 @@
-import AuthorSocialsItems from "../AuthorSocialsItems/AuthorSocialsItems";
-import { SectionProps } from "./CreatorForm";
+"use client";
 
-const Author = ({ selectedLanguage, getExtendedFieldText}: SectionProps) => {
-  if (getExtendedFieldText === undefined) return;
+import { useAppSelector } from "@/redux/hooks";
+import AuthorSocialsItems from "../AuthorSocialsItems/AuthorSocialsItems";
+import { curryTextGetter } from "@/utils/getFormText";
+
+const Author = () => {
+  const { creatorFormLanguage } = useAppSelector(state => state.language); 
+  const getExtendedFieldText = curryTextGetter(creatorFormLanguage, "extended");
 
   return (
     <div className="form__section">
