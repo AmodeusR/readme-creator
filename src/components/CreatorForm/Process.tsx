@@ -4,9 +4,9 @@ import { developedWithOptions } from "@/utils/developedWithOptions";
 import { SectionProps } from "./CreatorForm";
 import TagInput from "../TagInput/TagInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
-import ItemRegister from "../ItemRegister/ItemRegister";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setWhatILearned } from "@/redux/slices/readmeSlice";
+import UsefulResourcesItems from "../UsefulResourcesItems/UsefulResourcesItems";
 
 const Process = ({
   getFieldText,
@@ -34,7 +34,7 @@ const Process = ({
         onChange={(e) => dispatch(setWhatILearned(e.target.value))}
       />
       {/* Useful resources */}
-      <ItemRegister
+      <UsefulResourcesItems
         title="Recursos úteis"
         textarea={{
           label: getExtendedFieldText("usefulResources", "description", "value"),
