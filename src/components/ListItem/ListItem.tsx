@@ -1,6 +1,12 @@
 import { Delete } from "@/assets";
 import { shortenText } from "@/utils/shortenText";
-import { Item } from "../ItemRegister/ItemRegister";
+
+export type Item = {
+  id: string;
+  title: string;
+  link?: string;
+  description?: string;
+};
 
 type ListItemProps = {
   deleteItem: (id: string) => void;
@@ -22,7 +28,9 @@ const ListItem = ({ item, deleteItem }: ListItemProps) => {
         <span>{item.title}</span>
         <span>{shortenText(item.link, 32)}</span>
       </div>
-      <p className="item-list__description">{item.description}</p>
+      {item.description &&
+        <p className="item-list__description">{item.description}</p>
+      }
     </li>
   );
 };
