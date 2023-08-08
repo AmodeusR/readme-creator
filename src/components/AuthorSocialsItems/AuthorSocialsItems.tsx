@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { TextInputProps } from "@mantine/core";
 import MantineInput from "../MantineInput/MantineInput";
 import "../UsefulResourcesItems/item-register.scss";
@@ -8,7 +8,8 @@ import { Plus } from "@/assets";
 import ListItem, { Item } from "../ListItem/ListItem";
 import { nanoid } from "@reduxjs/toolkit";
 import { actionTypes, initialState, reducer } from "./author-socials.reducer";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { addSocialsItem, removeSocialsItem } from "@/redux/slices/readmeSlice";
 
 type AuthorSocialsItemsProps = {
   fields: {
@@ -20,8 +21,8 @@ type AuthorSocialsItemsProps = {
 
 const AuthorSocialsItems = ({ fields, title }: AuthorSocialsItemsProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [items, setItems] = useState<Item[]>([]);
   const reduxDispatch = useAppDispatch();
+  const { socials } = useAppSelector(state => state.readme.author);
 
   const addItem = () => {
     if (state.title.length === 0) {
@@ -35,11 +36,11 @@ const AuthorSocialsItems = ({ fields, title }: AuthorSocialsItemsProps) => {
       link: state.link,
     };
 
-    setItems((prevState) => [...prevState, newItem]);
+    reduxDispatch(addSocialsItem(newItem));
     dispatch({ type: actionTypes.CLEAR });
   };
   const deleteItem = (id: string) => {
-    setItems((curr) => curr.filter((item) => item.id !== id));
+    reduxDispatch(removeSocialsItem(id));
   };
 
   return (
@@ -75,7 +76,7 @@ const AuthorSocialsItems = ({ fields, title }: AuthorSocialsItemsProps) => {
         </button>
       </div>
       <ul className="item-list">
-        {items
+        {socials
           .map((item) => (
             <ListItem item={item} deleteItem={deleteItem} key={item.id} />
           ))
