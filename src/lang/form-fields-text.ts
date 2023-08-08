@@ -120,7 +120,7 @@ export type ExtendedLanguageFields = {
       description: FieldContent;
     };
   };
-  references: {
+  socials: {
     value: string;
     subtitles: {
       platform: FieldContent;
@@ -176,8 +176,8 @@ export const extendedLanguageFieldsText: ExtendedFieldLanguageType = {
         }
       },
     },
-    references: {
-      value: "Referências",
+    socials: {
+      value: "Sites e Mídias sociais",
       subtitles: {
         platform: {
           value: "Plataforma",
