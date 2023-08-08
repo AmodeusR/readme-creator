@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 type initialState = {
-  setPageLanguage: LanguageCode;
-  setCreatorFormLanguage: LanguageCode;
+  pageLanguage: LanguageCode;
+  creatorFormLanguage: LanguageCode;
 }
 
 const initialState: initialState = {
-  setPageLanguage: "en",
-  setCreatorFormLanguage: "en"
+  pageLanguage: "pt-br",
+  creatorFormLanguage: "pt-br"
 }
 
 const languageSlice = createSlice({
@@ -17,15 +17,15 @@ const languageSlice = createSlice({
   initialState,
   reducers: {
     setPageLanguage: (state, action: PayloadAction<LanguageCode>) => {
-      state.setPageLanguage = action.payload;
+      state.pageLanguage = action.payload;
     },
     setCreatorFormLanguage: (state, action: PayloadAction<LanguageCode>) => {
-      state.setCreatorFormLanguage = action.payload;
+      state.creatorFormLanguage = action.payload;
     }
   }
 })
 
 
-const {} = languageSlice.actions;
+export const { setPageLanguage, setCreatorFormLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;
