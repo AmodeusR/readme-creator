@@ -6,7 +6,7 @@ import { Delete } from "../../assets";
 import { curryTextGetter } from "../../utils/getFormText";
 import { LanguageCode } from "../../lang/form-fields-text";
 import "./image-dropzone.scss";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import { Image } from "./ImageDropzone";
 
@@ -19,15 +19,15 @@ export type ImageWithPosition = {
 }
 
 type SmallImageDropzoneProps = {
-  selectedLanguage: LanguageCode;
   setImageFunction: ActionCreatorWithPayload<ImageWithPosition>;
   removeImageFunction: ActionCreatorWithPayload<Positions>;
   imageOrigin: Image | null;
   position: Positions;
 }
 
-const SmallImageDropzone = ({ selectedLanguage, setImageFunction, removeImageFunction, imageOrigin, position }: SmallImageDropzoneProps) => {
-  const getExtendedTextForm = curryTextGetter(selectedLanguage, "extended");
+const SmallImageDropzone = ({ setImageFunction, removeImageFunction, imageOrigin, position }: SmallImageDropzoneProps) => {
+  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const getExtendedTextForm = curryTextGetter(creatorFormLanguage, "extended");
   const dispatch = useAppDispatch();
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
