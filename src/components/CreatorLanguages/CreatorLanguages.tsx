@@ -1,4 +1,8 @@
+"use client";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { LanguageCode } from "../../lang/form-fields-text";
+import { setCreatorFormLanguage } from "@/redux/slices/languageSlice";
 
 type AvailableLanguage = Readonly<{
   language: string;
@@ -28,21 +32,20 @@ const availableLanguages: AvailableLanguage[] = [
   },
 ];
 
-type CreatorLanguagesProps = {
-  selectedLanguage: LanguageCode;
-  handleSelection: (langcode: LanguageCode) => void;
-}
 
-const CreatorLanguages = ({ selectedLanguage, handleSelection }: CreatorLanguagesProps) => {
+const CreatorLanguages = () => {
+  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const dispatch = useAppDispatch();
+
   return (
     <ul className="creator__languages">
       {availableLanguages.map((language) => (
         <li key={language.langcode} className="creator__languages-option">
           <button
-            onClick={() => handleSelection(language.langcode)}
+            onClick={() => dispatch(setCreatorFormLanguage(language.langcode))}
             type="button"
             className={`creator__languages-option-button ${
-              selectedLanguage === language.langcode && "selected"
+              creatorFormLanguage === language.langcode && "selected"
             } ${language.langcode === "ja" && "ja-borderfix"}`}
           >
             {language.language}
