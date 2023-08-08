@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import readmeReducer from "./slices/readmeSlice";
+import languageReducer from "./slices/languageSlice";
 
 export const store = configureStore({
   reducer: {
-    readme: readmeReducer
+    readme: readmeReducer,
+    language: languageReducer
   }
 });
 
