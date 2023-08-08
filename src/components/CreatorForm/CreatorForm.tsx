@@ -1,46 +1,17 @@
-import {
-  ExtendedFieldTextGetter,
-  FieldTextGetter,
-  curryTextGetter,
-} from "../../utils/getFormText";
-import { LanguageCode } from "../../lang/form-fields-text";
-import "./form.scss";
 import Header from "./Header";
 import Overview from "./Overview";
 import Process from "./Process";
 import Author from "./Author";
+import "./form.scss";
 
-export type SectionProps = {
-  getFieldText: FieldTextGetter;
-  getExtendedFieldText?: ExtendedFieldTextGetter;
-  selectedLanguage: LanguageCode;
-};
-
-type CreatorFormProps = {
-  selectedLanguage: LanguageCode;
-};
-
-const CreatorForm = ({ selectedLanguage }: CreatorFormProps) => {
-  const getFieldText = curryTextGetter(selectedLanguage, "standard");
-  const getExtendedFieldText = curryTextGetter(selectedLanguage, "extended");
-
+const CreatorForm = () => {
+  
   return (
     <form className="creator__form">
-      <Header getFieldText={getFieldText} selectedLanguage={selectedLanguage} />
-      <Overview
-        getFieldText={getFieldText}
-        selectedLanguage={selectedLanguage}
-      />
-      <Process
-        getFieldText={getFieldText}
-        getExtendedFieldText={getExtendedFieldText}
-        selectedLanguage={selectedLanguage}
-      />
-      <Author
-        getFieldText={getFieldText}
-        getExtendedFieldText={getExtendedFieldText}
-        selectedLanguage={selectedLanguage}
-      />
+      <Header />
+      <Overview />
+      <Process />
+      <Author />
     </form>
   );
 };
