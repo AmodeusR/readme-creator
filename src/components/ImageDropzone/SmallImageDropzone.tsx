@@ -4,7 +4,6 @@ import { MouseEvent } from "react";
 import { useDropzone } from "react-dropzone";
 import { Delete } from "../../assets";
 import { curryTextGetter } from "../../utils/getFormText";
-import { LanguageCode } from "../../lang/form-fields-text";
 import "./image-dropzone.scss";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
