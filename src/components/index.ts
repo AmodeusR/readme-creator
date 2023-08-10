@@ -7,3 +7,4 @@ export { default as TagInput } from "./TagInput/TagInput";
 export { default as UsefulResourcesItems } from "./UsefulResourcesItems/UsefulResourcesItems";
 export { default as AuthorSocialsItems } from "./AuthorSocialsItems/AuthorSocialsItems";
 export { default as ListItem } from "./ListItem/ListItem";
+export { default as Previewer } from "./Previewer/Previewer";
