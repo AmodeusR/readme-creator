@@ -32,21 +32,23 @@ const availableLanguages: AvailableLanguage[] = [
   },
 ];
 
-
 const CreatorLanguages = () => {
-  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const { creatorFormLanguage } = useAppSelector((state) => state.language);
   const dispatch = useAppDispatch();
 
   return (
     <ul className="creator__languages">
       {availableLanguages.map((language) => (
-        <li key={language.langcode} className="creator__languages-option">
+        <li
+          key={language.langcode}
+          className={`creator__languages-option ${
+            creatorFormLanguage === language.langcode && "selected"
+          }`}
+        >
           <button
             onClick={() => dispatch(setCreatorFormLanguage(language.langcode))}
             type="button"
-            className={`creator__languages-option-button ${
-              creatorFormLanguage === language.langcode && "selected"
-            } ${language.langcode === "ja" && "ja-borderfix"}`}
+            className="creator__languages-option-button"
           >
             {language.language}
           </button>

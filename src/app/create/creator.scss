@@ -33,14 +33,10 @@
     display: flex;
     list-style: none;
     
-    &-option-button {
+    &-option {
       color: c.$button;
-      padding: .1rem .3rem;
       border-bottom: 1px solid c.$button;
-      transition: color 200ms ease;
-      font-weight: 500;
-
-
+      
       &.selected {
         color: c.$main;
         border-color: c.$main;
@@ -50,6 +46,12 @@
         color: darken(c.$button-background, 12%);
         border-color: darken(c.$button-background, 12%);
       }
+    }
+    
+    &-option-button {
+      color: inherit;
+      transition: color 200ms ease;
+      font-weight: 500;
 
       @include media($tablet) {
         padding: .1rem 1rem;
@@ -70,10 +72,7 @@
   doesn't aline properly sometimes with the border-bottom
   from the other texts. This fixes it (supposedly)
 */
-.ja-borderfix {
-  line-height: 1.5;
 
-  @include media($tablet) {
-    line-height: 1.55;
-  }
+.ja-borderfix {
+  /* padding-bottom: 0; */
 }
