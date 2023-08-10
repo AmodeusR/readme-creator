@@ -1,8 +1,9 @@
 import ProviderWrapper from "@/redux/ProviderWrapper";
 import "../styles/global.scss";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"]})
 
 export const metadata = {
   title: "Criador README",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>
+      <body className={`${notoSansJP.className} ${inter.className}`}>
         <ProviderWrapper>{children}</ProviderWrapper>
       </body>
     </html>

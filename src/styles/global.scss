@@ -8,8 +8,11 @@
 
 body {
   margin: 0;
-  font-family: "Poppins", "Noto Sans JP", sans-serif;
   background-color: c.$background;
+}
+
+body > * {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
 }
 
 h1,
@@ -60,4 +63,8 @@ strong {
   &:visited {
     color: darken(c.$link, 10%);
   }
+}
+
+.ja {
+  font-family: "Noto Sans JP";
 }
