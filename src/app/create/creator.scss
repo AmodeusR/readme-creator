@@ -66,13 +66,3 @@
     height: calc(100% + .5rem);
   }
 }
-
-/* 
-  For some reason, the border from the japanese text
-  doesn't aline properly sometimes with the border-bottom
-  from the other texts. This fixes it (supposedly)
-*/
-
-.ja-borderfix {
-  /* padding-bottom: 0; */
-}
