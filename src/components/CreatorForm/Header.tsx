@@ -29,7 +29,7 @@ const Header = () => {
         onChange={(e) => dispatch(setHeaderTitle(e.target.value))}
       />
       <MantineInput
-        label="Descrição"
+        label={getFieldText("description", "value")}
         placeholder={getFieldText("description", "placeholder")}
         description={getFieldText("description", "description")}
         value={header.description}
