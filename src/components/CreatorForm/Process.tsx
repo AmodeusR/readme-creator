@@ -10,8 +10,7 @@ import { curryTextGetter } from "@/utils/getFormText";
 
 const Process = () => {
   const dispatch = useAppDispatch();
-  const { whatILearned } = useAppSelector(state => state.readme.process);
-  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const { process, creatorFormLanguage } = useAppSelector(state => state.readme);
   const getFieldText = curryTextGetter(creatorFormLanguage, "standard");
   const getExtendedFieldText = curryTextGetter(creatorFormLanguage, "extended");
 
@@ -28,7 +27,7 @@ const Process = () => {
         label={getFieldText("whatILearned", "value")}
         placeholder={getFieldText("whatILearned", "placeholder")}
         description={getFieldText("whatILearned", "description")}
-        value={whatILearned}
+        value={process[creatorFormLanguage].whatILearned}
         onChange={(e) => dispatch(setWhatILearned(e.target.value))}
       />
       {/* Useful resources */}

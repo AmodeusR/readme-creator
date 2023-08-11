@@ -21,7 +21,7 @@ type ImageDropzoneProps = {
 
 const ImageDropzone = ({ size = "normal", setImageFunction, removeImageFunction, imageOrigin }: ImageDropzoneProps) => {
   const dispatch = useAppDispatch();
-  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const { creatorFormLanguage } = useAppSelector(state => state.readme);
   const getExtendedTextForm = curryTextGetter(creatorFormLanguage, "extended");
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

@@ -5,7 +5,7 @@ import AuthorSocialsItems from "../AuthorSocialsItems/AuthorSocialsItems";
 import { curryTextGetter } from "@/utils/getFormText";
 
 const Author = () => {
-  const { creatorFormLanguage } = useAppSelector(state => state.language); 
+  const { creatorFormLanguage } = useAppSelector(state => state.readme); 
   const getExtendedFieldText = curryTextGetter(creatorFormLanguage, "extended");
 
   return (

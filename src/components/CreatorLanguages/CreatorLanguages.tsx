@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { LanguageCode } from "../../lang/form-fields-text";
-import { setCreatorFormLanguage } from "@/redux/slices/languageSlice";
+import { setCreatorFormLanguage } from "@/redux/slices/readmeSlice";
 
 type AvailableLanguage = Readonly<{
   language: string;
@@ -34,7 +34,7 @@ const availableLanguages: AvailableLanguage[] = [
 ];
 
 const CreatorLanguages = () => {
-  const { creatorFormLanguage } = useAppSelector((state) => state.language);
+  const { creatorFormLanguage } = useAppSelector((state) => state.readme);
   const dispatch = useAppDispatch();
 
   return (

@@ -13,8 +13,7 @@ import { curryTextGetter } from "@/utils/getFormText";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { header } = useAppSelector((state) => state.readme);
-  const { creatorFormLanguage } = useAppSelector((state) => state.language);
+  const { header, creatorFormLanguage } = useAppSelector((state) => state.readme);
   const getFieldText = curryTextGetter(creatorFormLanguage, "standard");
 
   return (
@@ -25,14 +24,14 @@ const Header = () => {
         label={getFieldText("title", "value")}
         placeholder={getFieldText("title", "placeholder")}
         description={getFieldText("title", "description")}
-        value={header.title}
+        value={header[creatorFormLanguage].title}
         onChange={(e) => dispatch(setHeaderTitle(e.target.value))}
       />
       <MantineInput
         label={getFieldText("description", "value")}
         placeholder={getFieldText("description", "placeholder")}
         description={getFieldText("description", "description")}
-        value={header.description}
+        value={header[creatorFormLanguage].description}
         onChange={(e) => dispatch(setHeaderDescription(e.target.value))}
       />
       <ImageDropzone
