@@ -9,6 +9,7 @@ type AvailableLanguage = Readonly<{
   langcode: LanguageCode;
 }>;
 
+// Available languages to create a README for
 const availableLanguages: AvailableLanguage[] = [
   {
     language: "Português",
