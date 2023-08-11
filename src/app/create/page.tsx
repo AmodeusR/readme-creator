@@ -1,6 +1,6 @@
 "use client";
 // ? For some reason, this component needs to be a client component because of the imports below needing flushSync from React
-import { CreatorForm, CreatorLanguages } from "../../components";
+import { CreatorForm, CreatorLanguages, Previewer } from "../../components";
 import "./creator.scss";
 
 
@@ -12,9 +12,8 @@ const Creator = () => {
       <main className="creator">
         <CreatorForm />
         <hr className="creator__separator" />
-        <div className="creator__preview">
-          <p>Preview</p>
-        </div>
+        <Previewer />
+        
       </main>
     </div>
   );
