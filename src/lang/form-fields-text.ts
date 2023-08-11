@@ -234,11 +234,11 @@ export const extendedLanguageFieldsText: ExtendedFieldLanguageType = {
         }
       },
     },
-    references: {
-      value: "References",
+    socials: {
+      value: "Website and Socials",
       subtitles: {
         platform: {
-          value: "Website",
+          value: "Platform",
           placeholder: "Website's name",
           description: undefined
         },
