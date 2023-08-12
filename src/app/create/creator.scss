@@ -29,9 +29,9 @@
   }
 
   &__languages {
-    padding-left: 0;
     display: flex;
     list-style: none;
+    padding-left: 0;
     
     &-option {
       color: c.$button;
@@ -52,10 +52,7 @@
       color: inherit;
       transition: color 200ms ease;
       font-weight: 500;
-
-      @include media($tablet) {
-        padding: .1rem 1rem;
-      }
+      padding: .1rem clamp(.3rem, 1.1vw, 1rem);
     }
   }
 
