@@ -31,7 +31,7 @@ const UsefulResourcesItems = ({
 }: UsefulResourcesItemsProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const reduxDispatch = useAppDispatch();
-  const { usefulResources } = useAppSelector((state) => state.readme.process);
+  const { process, creatorFormLanguage } = useAppSelector((state) => state.readme);
 
   const addItem = () => {
     if (state.title.length === 0) {
@@ -96,7 +96,7 @@ const UsefulResourcesItems = ({
       />
       <h4 className="item-list__title">Adicionados</h4>
       <ul className="item-list">
-        {usefulResources
+        {process[creatorFormLanguage].usefulResources
           .map((item) => (
             <ListItem item={item} deleteItem={deleteItem} key={item.id} />
           ))

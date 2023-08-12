@@ -25,7 +25,7 @@ type SmallImageDropzoneProps = {
 }
 
 const SmallImageDropzone = ({ setImageFunction, removeImageFunction, imageOrigin, position }: SmallImageDropzoneProps) => {
-  const { creatorFormLanguage } = useAppSelector(state => state.language);
+  const { creatorFormLanguage } = useAppSelector(state => state.readme);
   const getExtendedTextForm = curryTextGetter(creatorFormLanguage, "extended");
   const dispatch = useAppDispatch();
 
