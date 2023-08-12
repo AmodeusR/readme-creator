@@ -43,13 +43,15 @@ const CreatorLanguages = () => {
         <li
           key={language.langcode}
           className={`creator__languages-option ${
-            creatorFormLanguage === language.langcode && "selected"
+            creatorFormLanguage === language.langcode ? "selected" : ""
           }`}
         >
           <button
             onClick={() => dispatch(setCreatorFormLanguage(language.langcode))}
             type="button"
-            className="creator__languages-option-button"
+            className={`creator__languages-option-button ${
+              language.langcode === "ja" ? "ja" : ""
+            }`}
           >
             {language.language}
           </button>
