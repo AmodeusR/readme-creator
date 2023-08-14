@@ -2,28 +2,29 @@
 
 import { useEffect, useState } from "react";
 import { MultiSelect, MultiSelectProps } from "@mantine/core";
-import { Tag } from "../../assets";
 import { useStyles } from "@/utils/mantineStyles";
 import { useAppDispatch } from "@/redux/hooks";
-import { setDevelopedWith } from "@/redux/slices/readmeSlice";
+import { AnyAction } from "redux";
+
+interface TagInputProps extends MultiSelectProps {
+  dispatcher: (payload: string[]) => AnyAction
+}
 
 // Input component
 export default function TagInput({
-  ...props
-}: MultiSelectProps) {
+  dispatcher, ...props
+}: TagInputProps) {
   const { classes } = useStyles();
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setDevelopedWith(chosenOptions));
+    dispatch(dispatcher(chosenOptions));
   }, [chosenOptions]);
   
   return (
     <MultiSelect
       size="md"
-      searchable
-      icon={<Tag />}
       classNames={{
         icon: classes.icon,
         value: classes.value,
@@ -31,8 +32,14 @@ export default function TagInput({
         root: classes.root,
         label: classes.label,
       }}
-      value={chosenOptions}
       onChange={setChosenOptions}
+      searchable
+      creatable
+      getCreateLabel={(query) => `+ Criar ${query}`}
+      onCreate={(query) => {
+        setChosenOptions([...chosenOptions, query]);
+        return query;
+      }}
       {...props}
     />
   );
