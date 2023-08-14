@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { MultiSelect, MultiSelectProps } from "@mantine/core";
 import { useStyles } from "@/utils/mantineStyles";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector} from "@/redux/hooks";
 import { AnyAction } from "redux";
 
 interface TagInputProps extends MultiSelectProps {
   dispatcher: (payload: string[]) => AnyAction
 }
+
 
 // Input component
 export default function TagInput({
@@ -17,10 +18,18 @@ export default function TagInput({
   const { classes } = useStyles();
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-
+  const { overview, creatorFormLanguage } = useAppSelector(state => state.readme);
+  
   useEffect(() => {
     dispatch(dispatcher(chosenOptions));
   }, [chosenOptions]);
+  
+  // Hard fix to chosenOptions not updating when changing language
+  useEffect(() => {
+    if(props.value) {
+      setChosenOptions(overview[creatorFormLanguage].challenges);
+    }
+  }, [creatorFormLanguage]);
   
   return (
     <MultiSelect
@@ -32,7 +41,6 @@ export default function TagInput({
         root: classes.root,
         label: classes.label,
       }}
-      onChange={setChosenOptions}
       searchable
       creatable
       getCreateLabel={(query) => `+ Criar ${query}`}
