@@ -43,6 +43,7 @@ export default function TagInput({
       }}
       searchable
       creatable
+      onChange={setChosenOptions}
       getCreateLabel={(query) => `+ Criar ${query}`}
       onCreate={(query) => {
         setChosenOptions([...chosenOptions, query]);
