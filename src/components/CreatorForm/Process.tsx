@@ -4,9 +4,10 @@ import { developedWithOptions } from "@/utils/developedWithOptions";
 import TagInput from "../TagInput/TagInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setWhatILearned } from "@/redux/slices/readmeSlice";
+import { setDevelopedWith, setWhatILearned } from "@/redux/slices/readmeSlice";
 import UsefulResourcesItems from "../UsefulResourcesItems/UsefulResourcesItems";
 import { curryTextGetter } from "@/utils/getFormText";
+import { Tag } from "@/assets";
 
 const Process = () => {
   const dispatch = useAppDispatch();
@@ -19,9 +20,11 @@ const Process = () => {
       <h2 className="form__section-title">Processo</h2>
       <TagInput
         data={developedWithOptions}
+        dispatcher={setDevelopedWith}
         label={getFieldText("developedWith", "value")}
         description={getFieldText("developedWith", "description")}
         placeholder={getFieldText("developedWith", "placeholder")}
+        icon={<Tag />}
       />
       <TextareaInput
         label={getFieldText("whatILearned", "value")}

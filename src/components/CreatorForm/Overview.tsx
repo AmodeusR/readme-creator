@@ -1,4 +1,3 @@
-import MantineInput from "../MantineInput/MantineInput";
 import TextareaInput from "../TextareaInput/TextareaInput";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
@@ -9,6 +8,7 @@ import {
 } from "@/redux/slices/readmeSlice";
 import SmallImageDropzone from "../ImageDropzone/SmallImageDropzone";
 import { curryTextGetter } from "@/utils/getFormText";
+import TagInput from "../TagInput/TagInput";
 
 const Overview = () => {
   const dispatch = useAppDispatch();
@@ -20,13 +20,13 @@ const Overview = () => {
   return (
     <div className="form__section form__inputs">
       <h2 className="form__section-title">Sessão Geral</h2>
-      {/* // TODO: Change this for TagInput */}
-      <MantineInput
+      <TagInput
+        data={overview[creatorFormLanguage].challenges}
+        value={overview[creatorFormLanguage].challenges}
+        dispatcher={setChallenges}
         label={getFieldText("challenges", "value")}
         placeholder={getFieldText("challenges", "placeholder")}
         description={getFieldText("challenges", "description")}
-        value={overview[creatorFormLanguage].challenges}
-        onChange={(e) => dispatch(setChallenges(e.target.value))}
       />
       <div>
         <p className="form__screen-captures-title">Capturas de Tela</p>

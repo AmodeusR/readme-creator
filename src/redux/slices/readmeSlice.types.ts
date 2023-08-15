@@ -11,7 +11,7 @@ export type Header = {
 
 export type Overview = {
   [K in LanguageCode]: {
-    challenges: string;
+    challenges: string[];
     links: string;
   }
 } & {

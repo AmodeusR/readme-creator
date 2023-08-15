@@ -44,11 +44,11 @@ const initialState: InitialState = {
     image: null,
   },
   overview: {
-    "pt-br": { challenges: "", links: "" },
-    en: { challenges: "", links: "" },
-    ja: { challenges: "", links: "" },
-    de: { challenges: "", links: "" },
-    es: { challenges: "", links: "" },
+    "pt-br": { challenges: [], links: "" },
+    en: { challenges: [], links: "" },
+    ja: { challenges: [], links: "" },
+    de: { challenges: [], links: "" },
+    es: { challenges: [], links: "" },
     images: {
       1: null,
       2: null,
@@ -88,7 +88,7 @@ const readmeSlice = createSlice({
     removeHeaderImage: (state) => {
       state.header.image = null;
     },
-    setChallenges: (state, action: PayloadAction<string>) => {
+    setChallenges: (state, action: PayloadAction<string[]>) => {
       const { creatorFormLanguage } = state;
       state.overview[creatorFormLanguage].challenges = action.payload;
     },
