@@ -30,3 +30,7 @@ export type Process = {
 } & {
   developedWith: string[];
 }
+
+export type Author = {
+  socials: Item[];
+};

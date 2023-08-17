@@ -7,15 +7,13 @@ import { Item } from "@/components/ListItem/ListItem";
 import { LanguageCode } from "@/lang/form-fields-text";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Header, Overview, Process } from "./readmeSlice.types";
+import { Author, Header, Overview, Process } from "./readmeSlice.types";
 
 type InitialState = {
   header: Header;
   overview: Overview;
   process: Process;
-  author: {
-    socials: Item[];
-  };
+  author: Author;
   creatorFormLanguage: LanguageCode;
 };
 
