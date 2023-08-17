@@ -1,4 +1,3 @@
-import React from "react";
 import { Header } from "@/redux/slices/readmeSlice.types";
 import { PreviewersProps } from "./previewers.types";
 
