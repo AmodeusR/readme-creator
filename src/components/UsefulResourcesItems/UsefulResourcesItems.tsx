@@ -48,6 +48,7 @@ const UsefulResourcesItems = ({
     reduxDispatch(addUsefulResourcesItem(newItem));
     dispatch({ type: actionTypes.CLEAR });
   };
+  
   const deleteItem = (id: string) => {
     reduxDispatch(removeUsefulResourcesItem(id));
   };
